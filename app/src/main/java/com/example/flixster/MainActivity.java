@@ -10,6 +10,9 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import okhttp3.Headers;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
@@ -25,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 Log.d(TAG, "onSuccess");
+                JSONObject jsonObject = json.jsonObject;
+                try {
+                    jsonObject.getJSONArray("results");
+                } catch(JSONException e){
+                    Log.e(TAG, "Hit json exception", e);
+                    e.printStackTrace();
+                }
+
             }
 
             @Override
