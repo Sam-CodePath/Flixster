@@ -73,7 +73,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             String imageUrl;
-
+            int placeHolderID;
             // psuedo code
             // if phone is in landscape
             // imageurl = backdrop image
@@ -82,11 +82,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageUrl = movie.getBackdropPath();
+                placeHolderID = R.drawable.flicks_backdrop_placeholder;
             } else {
                 imageUrl = movie.getPosterPath();
+                placeHolderID = R.drawable.flicks_movie_placeholder;
             }
 
-            Glide.with(context).load(imageUrl).into(ivPoster);
+            Glide.with(context).load(imageUrl).placeholder(placeHolderID).into(ivPoster);
 
         }
     }
