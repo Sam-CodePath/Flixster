@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
 
         movies = new ArrayList<>();
+
+
+        getSupportActionBar().setBackgroundDrawable(
+                new ColorDrawable(Color.parseColor("#4a0303")));
 
         // Create the adapter
         final MovieAdapter movieAdapter = new MovieAdapter(this, movies);
