@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<carbon.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
+    android:layout_marginBottom="20dp"
     android:background="#3A0202"
-    android:elevation="4dp"
-    android:paddingTop="20dp"
-    android:paddingBottom="15dp">
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    >
 
-    <TextView
+    <carbon.widget.RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="10dp"
+    app:carbon_cornerRadius="0dp"
+    app:carbon_elevation="8dp"
+    app:carbon_elevationShadowColor="@color/carbon_white_10"
+    >
+
+
+
+    <carbon.widget.TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,8 +67,12 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+          />
 
     </RelativeLayout>
 
-</RelativeLayout>
+
+    </carbon.widget.RelativeLayout>
+
+</carbon.widget.RelativeLayout>
