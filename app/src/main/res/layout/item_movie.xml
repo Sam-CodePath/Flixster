@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="160dp"
     android:layout_marginTop="10dp"
-    android:layout_marginBottom="20dp">
+    android:layout_marginBottom="20dp"
+    android:background="#3A0202">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -17,6 +18,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="1dp"
         android:layout_toEndOf="@+id/ivContainer"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         tools:text="Fast Furious Presents: Hobbs Shaw" />
 
@@ -30,6 +32,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="0dp"
         android:layout_toEndOf="@+id/ivContainer"
+        android:textColor="#FFFFFF"
         tools:text="In a suburban fantasy world, two teenage elf brothers embark on an extraordinary quest to discover if there is still a little magic left out there" />
 
     <RelativeLayout
