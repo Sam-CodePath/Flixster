@@ -103,12 +103,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 placeHolderID = R.drawable.flicks_movie_placeholder;
             }
 
-            int radius = 30; // corner radius, higher value = more rounded
+            int radius = 15; // corner radius, higher value = more rounded
             int margin = 2; // crop margin, set to 0 for corners with no crop
 
             Glide.with(context).load(imageUrl).placeholder(placeHolderID).transform(new RoundedCornersTransformation(radius, margin)).into(ivPoster);
 
         }
+
 
         // when the user clicks on a row, show MovieDetailsActivity for the selected movie
         @Override
@@ -127,5 +128,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 context.startActivity(intent);
             }
         }
+
+
     }
 }

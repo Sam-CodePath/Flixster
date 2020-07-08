@@ -10,15 +10,88 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovies"
         android:layout_width="match_parent"
-        android:layout_height="610dp"
+        android:layout_height="485dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="246dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp"
         android:background="#3A0202" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="4dp"
+        android:alpha="0.3"
+        android:elevation="11dp"
+        android:text="F L I X S T E R"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="55sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="-1dp"
+        android:alpha="0.95"
+        android:elevation="10dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/nvm" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="58dp"
+        android:layout_height="46dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="182dp"
+        android:elevation="13dp"
+        android:rotation="-10"
+        app:srcCompat="@drawable/cam" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="45dp"
+        android:layout_height="53dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="4dp"
+        android:alpha="1"
+        android:elevation="12dp"
+        android:rotation="10"
+        app:srcCompat="@drawable/cinema" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView5"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="187dp"
+        android:layout_marginEnd="0dp"
+        android:text="A D M I T  O N E"
+        android:textAlignment="center"
+        android:textColor="#FFF7F7"
+        android:textSize="36sp" />
+
 </RelativeLayout>

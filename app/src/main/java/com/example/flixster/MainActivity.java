@@ -1,5 +1,6 @@
 package com.example.flixster;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,10 @@ import com.example.flixster.models.Movie;
 
 import okhttp3.Headers;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.RelativeLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,14 +37,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
         setContentView(R.layout.activity_main);
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
 
         movies = new ArrayList<>();
 
 
-        getSupportActionBar().setBackgroundDrawable(
-                new ColorDrawable(Color.parseColor("#4a0303")));
+        getSupportActionBar().hide();
+
+
 
         // Create the adapter
         final MovieAdapter movieAdapter = new MovieAdapter(this, movies);
@@ -47,10 +58,48 @@ public class MainActivity extends AppCompatActivity {
         // Set the adapter on the recycler view
         rvMovies.setAdapter(movieAdapter);
 
-
         // Set a Layout Manager on the recycler view
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
+        rvMovies.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                Log.i("RV", "Scrolled!");
+
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                int visibleCount = recyclerView.getChildCount();
+
+                int total =  ((LinearLayoutManager)recyclerView.getLayoutManager()).getItemCount();
+                int firstVisible = ((LinearLayoutManager)recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition(); //VisibleItemPosition();
+                if (firstVisible != -1) {
+                    for (int i = 0; i < total; i++) {
+                        // First movie we can see
+                        Movie topMovie = movies.get(firstVisible);
+                        View centerView = ((LinearLayoutManager) recyclerView.getLayoutManager()).findViewByPosition(i);
+                        if (centerView != null) {
+                            // Get top view
+                            RelativeLayout rvLayout = centerView.findViewById(R.id.rvControl);
+
+                            float alphaVal = (float) 0.6;
+                            if (i == firstVisible) {
+                                alphaVal = (float) 1.0;
+                            }
+
+                            // Animate alpha change
+                            rvLayout.animate().alpha(alphaVal).setDuration(100).setListener(null);
+                        }
+                    }
+
+                }
+
+
+            }
+        });
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
