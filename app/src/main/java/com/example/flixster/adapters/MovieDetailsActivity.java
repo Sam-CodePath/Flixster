@@ -1,16 +1,25 @@
 package com.example.flixster.adapters;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
 import org.parceler.Parcels;
+
+import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
@@ -21,15 +30,25 @@ public class MovieDetailsActivity extends AppCompatActivity {
     TextView tvTitle;
     TextView tvOverview;
     RatingBar rbVoteAverage;
+    ImageView ivLargeBG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
+
+        // Hide the support action bar
+        getSupportActionBar().hide();
+
         // resolve the view objects
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvOverview = (TextView) findViewById(R.id.tvOverview);
         rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
+        ivLargeBG = (ImageView) findViewById(R.id.ivLargeBG);
 
         // unwrap the movie passed in via intent, using its simple name as a key
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
@@ -42,5 +61,10 @@ public class MovieDetailsActivity extends AppCompatActivity {
         // vote average is 0..10, convert to 0..5 by dividing by 2
         float voteAverage = movie.getVoteAverage().floatValue();
         rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f : voteAverage);
+
+        String imageUrl = movie.getPosterPath();
+        int placeHolderID = R.drawable.flicks_backdrop_placeholder;
+        Glide.with(this).load(imageUrl).placeholder(placeHolderID).into(ivLargeBG);
+
     }
 }

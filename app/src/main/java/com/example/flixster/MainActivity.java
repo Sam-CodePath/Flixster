@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // Set a Layout Manager on the recycler view
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
+
         rvMovies.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -113,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
                     movies.addAll(Movie.fromJsonArray(results));
                     movieAdapter.notifyDataSetChanged();
                     Log.i(TAG, "Movies: " + movies.size());
+
+                    ((LinearLayoutManager)rvMovies.getLayoutManager()).scrollToPositionWithOffset(1, 450);
+
                 } catch(JSONException e){
                     Log.e(TAG, "Hit json exception", e);
                     e.printStackTrace();
