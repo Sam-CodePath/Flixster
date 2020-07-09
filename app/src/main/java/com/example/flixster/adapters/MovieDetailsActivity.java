@@ -31,6 +31,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     TextView tvOverview;
     RatingBar rbVoteAverage;
     ImageView ivLargeBG;
+    ImageView ivPoster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         tvOverview = (TextView) findViewById(R.id.tvOverview);
         rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
         ivLargeBG = (ImageView) findViewById(R.id.ivLargeBG);
+        ivPoster = (ImageView) findViewById(R.id.ivPoster);
 
         // unwrap the movie passed in via intent, using its simple name as a key
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
@@ -62,9 +64,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
         float voteAverage = movie.getVoteAverage().floatValue();
         rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f : voteAverage);
 
-        String imageUrl = movie.getPosterPath();
+        String imageUrl = movie.getBackdropPath();
         int placeHolderID = R.drawable.flicks_backdrop_placeholder;
         Glide.with(this).load(imageUrl).placeholder(placeHolderID).into(ivLargeBG);
+
+        // ivPoster
+        String posterUrl = movie.getPosterPath();
+        int posterPlaceholderID = R.drawable.flicks_movie_placeholder;
+        Glide.with(this).load(posterUrl).placeholder(posterPlaceholderID).into(ivPoster);
 
     }
 }
