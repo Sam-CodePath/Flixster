@@ -1,6 +1,7 @@
 package com.example.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.flixster.MovieTrailerActivity;
 import com.example.flixster.R;
 import com.example.flixster.databinding.ActivityMovieDetailsBinding;
 import com.example.flixster.models.Movie;
@@ -81,6 +83,18 @@ public class MovieDetailsActivity extends AppCompatActivity {
         String posterUrl = movie.getPosterPath();
         int posterPlaceholderID = R.drawable.flicks_movie_placeholder;
         Glide.with(this).load(posterUrl).placeholder(posterPlaceholderID).into(ivPoster);
+
+        // Click listener
+        ivLargeBG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MovieTrailerActivity.class);
+                i.putExtra("movieid", movie.getMovieID());
+                startActivity(i);
+                finish();
+            }
+        });
+
 
     }
 }
