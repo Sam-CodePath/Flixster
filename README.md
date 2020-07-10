@@ -38,10 +38,14 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
+- I was not able to get the actual YouTube app installed on the emulator (as you can see in the video), and I wasn't sure how to record it from my phone; however, it does work. 
+
 ## Open-source libraries used
 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
 - [Glide](https://github.com/bumptech/glide) - Image loading and caching library for Android
+- YoutubeAndroidPlayerApi 
+- View Binding 
 
 ## License
 

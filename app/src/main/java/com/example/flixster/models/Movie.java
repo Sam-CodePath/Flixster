@@ -18,6 +18,7 @@ public class Movie {
     String overview;
     Double voteAverage;
     String movieID;
+    Double popularity;
 
     // no-arg, empty constructor required for Parceler
     public Movie() {}
@@ -29,6 +30,7 @@ public class Movie {
         backdropPath = movie.getString("backdrop_path");
         voteAverage = movie.getDouble("vote_average");
         movieID = movie.getString("id");
+        popularity = movie.getDouble("popularity");
     }
 
     public Double getVoteAverage() {
@@ -61,6 +63,8 @@ public class Movie {
     }
 
     public String getMovieID(){ return movieID; }
+
+    public String getPopularity() { return Double.toString(popularity); }
 
 
 }
